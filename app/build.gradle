@@ -48,6 +48,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
+    def nav_version = "2.5.3"
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation platform('org.jetbrains.kotlin:kotlin-bom:1.8.0')
@@ -66,4 +68,9 @@ dependencies {
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
+
+    //Navegation
+    implementation "androidx.navigation:navigation-compose:$nav_version"
+    //LiveData
+    implementation "androidx.compose.runtime:runtime-livedata:1.2.1"
 }
