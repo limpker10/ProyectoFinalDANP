@@ -1,4 +1,4 @@
-package com.unsa.edu.proyectofinaldanp.ui.Screens.login
+package com.unsa.edu.proyectofinaldanp.ui.screens.ResetPassword
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController

@@ -1,4 +1,4 @@
-package com.unsa.edu.proyectofinaldanp.ui.Screens.login
+package com.unsa.edu.proyectofinaldanp.ui.screens.login
 
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult

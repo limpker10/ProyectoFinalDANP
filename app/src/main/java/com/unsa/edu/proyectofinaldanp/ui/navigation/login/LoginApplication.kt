@@ -1,14 +1,13 @@
-package com.unsa.edu.proyectofinaldanp.ui.navigation.Login
+package com.unsa.edu.proyectofinaldanp.ui.navigation.login
 
-import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.unsa.edu.proyectofinaldanp.ui.Screens.login.LoginScreen
-import com.unsa.edu.proyectofinaldanp.ui.Screens.login.LoginViewModel
-import com.unsa.edu.proyectofinaldanp.ui.Screens.login.RegisterScreen
-import com.unsa.edu.proyectofinaldanp.ui.Screens.login.ResetScreen
+import com.unsa.edu.proyectofinaldanp.ui.screens.login.LoginScreen
+import com.unsa.edu.proyectofinaldanp.ui.screens.login.LoginViewModel
+import com.unsa.edu.proyectofinaldanp.ui.screens.register.RegisterScreen
+import com.unsa.edu.proyectofinaldanp.ui.screens.ResetPassword.ResetScreen
 
 @Composable
 fun LoginApplication(){
