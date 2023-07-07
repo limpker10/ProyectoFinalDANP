@@ -74,9 +74,13 @@ fun Login(modifier: Modifier, viewModel: LoginViewModel, navController: NavHostC
             Spacer(modifier = Modifier.padding(20.dp))
             LoginButton(loginEnable) {
                 coroutineScope.launch {
-                    viewModel.onLoginSelected()
+                    if (viewModel.onLoginSelected(email,password)){
+                        navController.navigate("reset_page")
+                    }
                 }
             }
+            Spacer(modifier = Modifier.padding(10.dp))
+            ToRegisterButton(){navController.navigate("register_page")}
         }
     }
 }
@@ -132,14 +136,28 @@ fun LoginButton(loginEnable: Boolean, onLoginSelected: () -> Unit) {
             .fillMaxWidth()
             .height(48.dp),
         colors = ButtonDefaults.buttonColors(
-            contentColor = Color.White,
+            contentColor = Color.Black,
             disabledContentColor = Color.White
         ), enabled = loginEnable
     ) {
         Text(text = "Iniciar sesión")
     }
 }
-
+@Composable
+fun ToRegisterButton(onLoginSelected: () -> Unit) {
+    Button(
+        onClick = { onLoginSelected() },
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(48.dp),
+        colors = ButtonDefaults.buttonColors(
+            contentColor = Color.Black,
+            disabledContentColor = Color.White
+        ),
+    ) {
+        Text(text = "Register Account")
+    }
+}
 @Composable
 fun ForgotPassword(modifier: Modifier) {
     Text(

@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 class LoginViewModel : ViewModel() {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val _loading =  MutableLiveData(false)
 
     private val _email = MutableLiveData<String>()
     val email: LiveData<String> = _email
@@ -34,15 +33,36 @@ class LoginViewModel : ViewModel() {
         _loginEnable.value = isValidEmail(email) && isValidPassword(password)
     }
 
-    private fun isValidPassword(password: String): Boolean = password.length > 6
+    private fun isValidPassword(password: String): Boolean = password.length > 4
 
     private fun isValidEmail(email: String): Boolean  = Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
-    suspend fun onLoginSelected() {
-        _isLoading.value = true
-        delay(4000)
-        _isLoading.value = false
+    fun onLoginSelected(email: String, password: String): Boolean {
+        var isLoading = false
+        try {
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Login successful
+                        Log.d("Login", "Ingreso exitoso")
+                        isLoading = true
+                    } else {
+                        // Login failed
+                        Log.d("Login", "Fallo el inicio de sesión")
+                        isLoading = false
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    // Handle the exception
+                    Log.d("Login", "Excepción en el inicio de sesión: ${exception.localizedMessage}")
+                }
+        } catch (e: Exception) {
+            // Handle the exception
+            Log.d("Login", "Excepción en el inicio de sesión: ${e.localizedMessage}")
+        }
+        return isLoading
     }
+
 
     fun sigInWithGoogleCredenctial(credential : AuthCredential, home:() -> Unit) = viewModelScope.launch {
         try {
