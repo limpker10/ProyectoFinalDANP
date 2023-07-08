@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavHostController
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
@@ -37,19 +38,19 @@ class LoginViewModel : ViewModel() {
 
     private fun isValidEmail(email: String): Boolean  = Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
-    fun onLoginSelected(email: String, password: String): Boolean {
-        var isLoading = false
+    suspend fun onLoginSelected(email: String, password: String, navController: NavHostController) {
         try {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         // Login successful
                         Log.d("Login", "Ingreso exitoso")
-                        isLoading = true
+                        navController.navigate("Home_page")
                     } else {
                         // Login failed
                         Log.d("Login", "Fallo el inicio de sesión")
-                        isLoading = false
+                        _isLoading.value = true
+                        //Toast.makeText(this, "Error en el inicio de sesión", Toast.LENGTH_SHORT).show()
                     }
                 }
                 .addOnFailureListener { exception ->
@@ -60,7 +61,8 @@ class LoginViewModel : ViewModel() {
             // Handle the exception
             Log.d("Login", "Excepción en el inicio de sesión: ${e.localizedMessage}")
         }
-        return isLoading
+        delay(3000)
+        _isLoading.value = false
     }
 
 

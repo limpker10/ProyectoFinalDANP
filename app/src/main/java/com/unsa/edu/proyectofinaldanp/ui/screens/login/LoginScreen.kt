@@ -74,9 +74,7 @@ fun Login(modifier: Modifier, viewModel: LoginViewModel, navController: NavHostC
             Spacer(modifier = Modifier.padding(20.dp))
             LoginButton(loginEnable) {
                 coroutineScope.launch {
-                    if (viewModel.onLoginSelected(email,password)){
-                        navController.navigate("reset_page")
-                    }
+                    viewModel.onLoginSelected(email,password,navController)
                 }
             }
             Spacer(modifier = Modifier.padding(10.dp))
@@ -96,7 +94,7 @@ fun OthersAuth(modifier: Modifier, viewModel: LoginViewModel, navController: Nav
             val account = task.getResult(ApiException::class.java)
             val credential = GoogleAuthProvider.getCredential(account.idToken,null)
             viewModel.sigInWithGoogleCredenctial(credential){
-                navController.navigate("register_page")
+                navController.navigate("Home_page")
             }
         }catch (ex:Exception) {
             Log.d("loggin","googlesignin fallo")

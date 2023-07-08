@@ -4,6 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.unsa.edu.proyectofinaldanp.ui.pagination.views.DataItemScreen
+import com.unsa.edu.proyectofinaldanp.ui.pagination.views.DataItemViewModel
+import com.unsa.edu.proyectofinaldanp.ui.pagination.views.HomeScreen
+import com.unsa.edu.proyectofinaldanp.ui.pagination.views.HomeViewModel
 import com.unsa.edu.proyectofinaldanp.ui.screens.login.LoginScreen
 import com.unsa.edu.proyectofinaldanp.ui.screens.login.LoginViewModel
 import com.unsa.edu.proyectofinaldanp.ui.screens.register.RegisterScreen
@@ -18,5 +22,8 @@ fun LoginApplication(){
         composable("login_page", content = { LoginScreen(LoginViewModel(), navController = navController) })
         composable("register_page", content = { RegisterScreen(RegisterViewModel(), navController = navController) })
         composable("reset_page", content = { ResetScreen(navController = navController) })
+        composable("Home_page", content = { HomeScreen(HomeViewModel(),navController = navController) })
+        composable("TempList", content = { DataItemScreen(DataItemViewModel())})
+
     })
 }
