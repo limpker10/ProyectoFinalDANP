@@ -12,17 +12,18 @@ import com.unsa.edu.proyectofinaldanp.ui.screens.login.LoginScreen
 import com.unsa.edu.proyectofinaldanp.ui.screens.login.LoginViewModel
 import com.unsa.edu.proyectofinaldanp.ui.screens.register.RegisterScreen
 import com.unsa.edu.proyectofinaldanp.ui.screens.ResetPassword.ResetScreen
+import com.unsa.edu.proyectofinaldanp.ui.screens.main.MainScreen
 import com.unsa.edu.proyectofinaldanp.ui.screens.register.RegisterViewModel
 
 @Composable
 fun LoginApplication(){
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "login_page", builder = {
+    NavHost(navController = navController, startDestination = "Home_page", builder = {
         composable("login_page", content = { LoginScreen(LoginViewModel(), navController = navController) })
         composable("register_page", content = { RegisterScreen(RegisterViewModel(), navController = navController) })
         composable("reset_page", content = { ResetScreen(navController = navController) })
-        composable("Home_page", content = { HomeScreen(HomeViewModel(),navController = navController) })
+        composable("Home_page", content = { MainScreen()})
         composable("TempList", content = { DataItemScreen(DataItemViewModel())})
 
     })

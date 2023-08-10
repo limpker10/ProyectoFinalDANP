@@ -1,6 +1,7 @@
 package com.unsa.edu.proyectofinaldanp.ui.screens.login
 
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
@@ -97,7 +98,8 @@ fun OthersAuth(modifier: Modifier, viewModel: LoginViewModel, navController: Nav
                 navController.navigate("Home_page")
             }
         }catch (ex:Exception) {
-            Log.d("loggin","googlesignin fallo")
+            Log.e("loggin","google signin fallo", ex)
+            Toast.makeText(context, "Google : Fallo auhtenticacion ", Toast.LENGTH_SHORT).show()
         }
     }
 
