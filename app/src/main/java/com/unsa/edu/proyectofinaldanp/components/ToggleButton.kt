@@ -1,4 +1,4 @@
-package com.example.dnap_finalproject.components
+package com.unsa.edu.proyectofinaldanp.components
 
 import android.util.Log
 import androidx.compose.foundation.background

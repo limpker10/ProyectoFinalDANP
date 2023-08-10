@@ -1,10 +1,13 @@
 package com.unsa.edu.proyectofinaldanp.ui.pagination.views
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,7 +23,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -88,6 +93,7 @@ fun DataItemScreen(viewModel: DataItemViewModel) {
 }
 @Composable
 fun DataItemCard(dataItem: DataItem) {
+    val formattedTemperature = String.format("%.2f", dataItem.temperature.toDouble())
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -110,6 +116,11 @@ fun DataItemCard(dataItem: DataItem) {
                     contentDescription = "Favorite",
                     modifier = Modifier.size(48.dp)
                 )
+                Icon(
+                    painter = painterResource(id = R.drawable.mode_fan),
+                    contentDescription = "Favorite",
+                    modifier = Modifier.size(48.dp)
+                )
                 Text(
                     text = "ID: "+ dataItem.id.toString(),
                     style = MaterialTheme.typography.bodyMedium,
@@ -120,12 +131,24 @@ fun DataItemCard(dataItem: DataItem) {
                 Row() {
 
                     Text(
-                        text = dataItem.temperature,
+                        text = formattedTemperature,
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
                         text = dataItem.UnitTemperature,
+                        style = MaterialTheme.typography.headlineMedium,
+                    )
+                }
+                Row() {
+
+                    Text(
+                        text = dataItem.humidity,
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = dataItem.UnitHumidity,
                         style = MaterialTheme.typography.headlineMedium,
                     )
                 }
@@ -136,6 +159,14 @@ fun DataItemCard(dataItem: DataItem) {
                     style = MaterialTheme.typography.bodyLarge,
                 )
             }
+            Image(
+                painter = painterResource(id = R.drawable.background),
+                contentDescription = "Logo de donartePeru",
+                contentScale = ContentScale.FillHeight,
+                modifier = Modifier
+                    .fillMaxHeight().size(103.dp)
+                    .alpha(0.5f)
+            )
 
         }
     }

@@ -8,7 +8,9 @@ import com.unsa.edu.proyectofinaldanp.ui.pagination.views.DataItemScreen
 import com.unsa.edu.proyectofinaldanp.ui.pagination.views.DataItemViewModel
 import com.unsa.edu.proyectofinaldanp.ui.pagination.views.HomeScreen
 import com.unsa.edu.proyectofinaldanp.ui.pagination.views.HomeViewModel
+import com.unsa.edu.proyectofinaldanp.ui.screens.Comand.CommandScreen
 import com.unsa.edu.proyectofinaldanp.ui.screens.main.settings.SettingsScreen
+import com.unsa.edu.proyectofinaldanp.ui.screens.main.settings.SettingsViewModel
 
 @Composable
 fun BottomNavGraph(navController: NavHostController) {
@@ -19,11 +21,11 @@ fun BottomNavGraph(navController: NavHostController) {
         composable(route = BottomBarScreen.Home.route) {
             HomeScreen(HomeViewModel(),navController = navController)
         }
-//        composable(route = BottomBarScreen.Profile.route) {
-//            ProfileScreen()
-//        }
+        composable(route = BottomBarScreen.Profile.route) {
+            CommandScreen()
+        }
         composable(route = BottomBarScreen.Settings.route) {
-            SettingsScreen()
+            SettingsScreen(SettingsViewModel())
         }
         composable(route = BottomBarScreen.MyOrganization.route) {
             DataItemScreen(DataItemViewModel())

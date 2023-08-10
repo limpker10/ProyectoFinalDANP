@@ -1,8 +1,7 @@
-package com.example.dnap_finalproject.mqtt
+package com.unsa.edu.proyectofinaldanp.mqtt
 
 import android.content.Context
 import android.util.Log
-import com.unsa.edu.proyectofinaldanp.mqtt.SensorDataTemperature
 import org.json.JSONException
 import org.json.JSONObject
 import software.amazon.awssdk.crt.CRT
@@ -91,7 +90,7 @@ class MqttConnection(private val context: Context) {
         subscribeFuture.whenComplete { _, throwable ->
             if (throwable == null) {
                 Log.i("MqttConnection", "Subscribed to topic: $topic")
-                mqttClientConnection.subscribe("esp8266/sub", QualityOfService.AT_MOST_ONCE) { message ->
+                mqttClientConnection.subscribe("esp8266/pub", QualityOfService.AT_MOST_ONCE) { message ->
                     val payload = String(message.payload, StandardCharsets.UTF_8)
                     Log.i("MqttConnection", "Received message: $payload")
                     try {

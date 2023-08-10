@@ -1,8 +1,7 @@
-package com.example.dnap_finalproject.components
+package com.unsa.edu.proyectofinaldanp.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,18 +27,18 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun Indicator(
     canvasSize: Dp = 300.dp,
-    indicatorValue: Int = 22,
-    maxIndicatorValue: Int = 100,
+    indicatorValue: Float = 22.0f,
+    maxIndicatorValue: Float = 100.0f,
     backgroundIndicatorColor: Color = MaterialTheme.colors.onSurface.copy(alpha = 0.1f),
     backgroundIndicatorStrokeWidth: Float = 100f,
-    foregroundIndicatorColor: Color = MaterialTheme.colors.primary,
+    foregroundIndicatorColor: Color = MaterialTheme.colors.primaryVariant,
     foregroundIndicatorStrokeWidth: Float = 100f,
     bigTextFontSize: TextUnit = MaterialTheme.typography.h3.fontSize,
-    bigTextColor: Color = MaterialTheme.colors.onSurface,
+    bigTextColor: Color = MaterialTheme.colors.onPrimary,
     bigTextSuffix: String = "°C",
     smallText: String = "Temperatura",
     smallTextFontSize: TextUnit = MaterialTheme.typography.h6.fontSize,
-    smallTextColor: Color = MaterialTheme.colors.onSurface.copy(alpha = 0.3f)
+    smallTextColor: Color = MaterialTheme.colors.onPrimary.copy(alpha = 0.7f)
 ) {
     var allowedIndicatorValue by remember {
         mutableStateOf(maxIndicatorValue)
@@ -55,21 +54,20 @@ fun Indicator(
         animatedIndicatorValue = allowedIndicatorValue.toFloat()
     }
 
-    val percentage =
-        (animatedIndicatorValue / maxIndicatorValue) * 100
+    val percentage = (animatedIndicatorValue / maxIndicatorValue) * 100.0f
 
     val sweepAngle by animateFloatAsState(
-        targetValue = (2.4 * percentage).toFloat(),
+        targetValue = (2.4f * percentage).toFloat(),
         animationSpec = tween(1000)
     )
 
-    val receivedValue by animateIntAsState(
-        targetValue = allowedIndicatorValue,
+    val receivedValue by animateFloatAsState(
+        targetValue = allowedIndicatorValue,  // Cambio a Float
         animationSpec = tween(1000)
     )
 
     val animatedBigTextColor by animateColorAsState(
-        targetValue = if (allowedIndicatorValue == 0)
+        targetValue = if (allowedIndicatorValue == 0.0f)
             MaterialTheme.colors.onSurface.copy(alpha = 0.3f)
         else
             bigTextColor,
@@ -159,7 +157,7 @@ fun DrawScope.foregroundIndicator(
 
 @Composable
 fun EmbeddedElements(
-    bigText: Int,
+    bigText: Float,
     bigTextFontSize: TextUnit,
     bigTextColor: Color,
     bigTextSuffix: String,
@@ -174,10 +172,11 @@ fun EmbeddedElements(
         textAlign = TextAlign.Center
     )
     Text(
-        text = "$bigText ${bigTextSuffix.take(2)}",
+        text = "${bigText.format(2)} ${bigTextSuffix}",
         color = bigTextColor,
         fontSize = bigTextFontSize,
         textAlign = TextAlign.Center,
         fontWeight = FontWeight.Bold
     )
 }
+fun Float.format(decimals: Int) = "%.${decimals}f".format(this)

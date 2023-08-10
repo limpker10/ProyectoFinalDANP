@@ -19,7 +19,7 @@ import com.unsa.edu.proyectofinaldanp.ui.screens.register.RegisterViewModel
 fun LoginApplication(){
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "Home_page", builder = {
+    NavHost(navController = navController, startDestination = "login_page", builder = {
         composable("login_page", content = { LoginScreen(LoginViewModel(), navController = navController) })
         composable("register_page", content = { RegisterScreen(RegisterViewModel(), navController = navController) })
         composable("reset_page", content = { ResetScreen(navController = navController) })

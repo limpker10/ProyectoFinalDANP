@@ -1,4 +1,5 @@
 package com.unsa.edu.proyectofinaldanp.ui.pagination.models
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import io.ktor.client.*
@@ -33,6 +34,35 @@ class ApiService {
                 } catch (e: Exception) {
                     e.printStackTrace()
                     emptyList() // En caso de error, se devuelve una lista vacía
+                }
+            }
+        }
+
+        suspend fun getLatestDataItems(count: Int): List<Pair<Int, Double>> {
+            val client = HttpClient() {
+                install(JsonFeature) {
+                    serializer = GsonSerializer()
+                }
+            }
+
+            return withContext(Dispatchers.IO) {
+                try {
+                    val response: String = client.get("https://qyjdshvlt63jhhqvfs3kre7npa0axjfq.lambda-url.us-east-1.on.aws/latest") {
+                        url {
+                            parameters.append("count", count.toString())
+                        }
+                    }
+
+                    val gson = Gson()
+                    val dataItems: List<DataItem> = gson.fromJson(response, object : TypeToken<List<DataItem>>() {}.type)
+
+                    // Convert DataItem list to a List<Pair<Int, Double>>
+                    val idAndTemperatures = dataItems.map { Pair(it.id, it.humidity.toDoubleOrNull() ?: 0.0) }
+                    Log.d("data", "Data items: $idAndTemperatures")
+                    idAndTemperatures
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    emptyList()
                 }
             }
         }
