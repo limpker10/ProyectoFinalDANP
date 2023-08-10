@@ -17,7 +17,7 @@ import java.util.UUID
 
 class MqttConnection(private val context: Context) {
     private val endPoint = "a2axh58ph1yz86-ats.iot.us-east-1.amazonaws.com"
-    private val resourceNames = listOf("Amazon.pem", "certificate.pem.crt", "private.pem.key")
+    private val resourceNames = listOf("AmazonRCA1.pem", "certificate.pem.crt", "private.pem.key")
 
     private val resourceMap: HashMap<String, String> by lazy { createResourceMap() }
     private val mqttClientConnection: MqttClientConnection by lazy { createMqttClientConnection() }

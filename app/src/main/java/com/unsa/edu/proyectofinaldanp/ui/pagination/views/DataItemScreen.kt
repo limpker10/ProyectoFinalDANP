@@ -125,7 +125,7 @@ fun DataItemCard(dataItem: DataItem) {
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = dataItem.unidad,
+                        text = dataItem.UnitTemperature,
                         style = MaterialTheme.typography.headlineMedium,
                     )
                 }

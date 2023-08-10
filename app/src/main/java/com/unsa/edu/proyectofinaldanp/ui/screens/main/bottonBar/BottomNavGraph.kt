@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.unsa.edu.proyectofinaldanp.ui.pagination.views.DataItemScreen
+import com.unsa.edu.proyectofinaldanp.ui.pagination.views.DataItemViewModel
 import com.unsa.edu.proyectofinaldanp.ui.pagination.views.HomeScreen
 import com.unsa.edu.proyectofinaldanp.ui.pagination.views.HomeViewModel
 import com.unsa.edu.proyectofinaldanp.ui.screens.main.settings.SettingsScreen
@@ -23,8 +25,8 @@ fun BottomNavGraph(navController: NavHostController) {
         composable(route = BottomBarScreen.Settings.route) {
             SettingsScreen()
         }
-//        composable(route = BottomBarScreen.MyOrganization.route) {
-//            DonationScreen()
-//        }
+        composable(route = BottomBarScreen.MyOrganization.route) {
+            DataItemScreen(DataItemViewModel())
+        }
     }
 }

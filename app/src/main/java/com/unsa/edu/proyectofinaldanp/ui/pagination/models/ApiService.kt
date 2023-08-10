@@ -20,7 +20,7 @@ class ApiService {
 
             return withContext(Dispatchers.IO) {
                 try {
-                    val response: String = client.get("https://mjrhtbnbtaofaeehiiykatfdki0hfmba.lambda-url.us-east-2.on.aws") {
+                    val response: String = client.get("https://qyjdshvlt63jhhqvfs3kre7npa0axjfq.lambda-url.us-east-1.on.aws") {
                         url {
                             parameters.append("page", page.toString())
                             parameters.append("size", size.toString())
@@ -37,7 +37,7 @@ class ApiService {
             }
         }
 
-        suspend fun postLambdaFunction(temperature: Double, unit: String, comentario:String): String {
+        suspend fun postLambdaFunction(temperature: Double, UnitTemperature: String, comentario:String): String {
             val client = HttpClient() {
                 install(JsonFeature) {
                     serializer = GsonSerializer()
@@ -46,10 +46,12 @@ class ApiService {
 
             return withContext(Dispatchers.IO) {
                 try {
-                    val response: String = client.get("https://mjrhtbnbtaofaeehiiykatfdki0hfmba.lambda-url.us-east-2.on.aws/add") {
+                    val response: String = client.get("https://qyjdshvlt63jhhqvfs3kre7npa0axjfq.lambda-url.us-east-1.on.aws/add") {
                         url {
                             parameters.append("temperature", temperature.toString())
-                            parameters.append("unit", unit.toString())
+                            parameters.append("UnitTemperature", UnitTemperature.toString())
+//                            parameters.append("temperature", temperature.toString())
+//                            parameters.append("unit", unit.toString())
                         }
                     }
                     response
