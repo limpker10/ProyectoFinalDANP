@@ -18,8 +18,8 @@ unsigned long lastMillis = 0;
 unsigned long previousMillis = 0;
 const long interval = 5000;
  
-#define AWS_IOT_PUBLISH_TOPIC   "esp8266/pub"
-#define AWS_IOT_SUBSCRIBE_TOPIC "esp8266/sub"
+#define AWS_IOT_PUBLISH_TOPIC   "Your publish_topic"
+#define AWS_IOT_SUBSCRIBE_TOPIC "Your suscribe_topic"
  
 WiFiClientSecure net;
  
