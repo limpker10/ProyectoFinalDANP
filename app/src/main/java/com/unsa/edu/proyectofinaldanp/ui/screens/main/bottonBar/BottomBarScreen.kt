@@ -21,19 +21,19 @@ sealed class BottomBarScreen(
 
     object Profile : BottomBarScreen(
         route = "profile",
-        title = "Search",
-        icon = Icons.Default.Add
+        title = "Temp",
+        icon = Icons.Default.Settings
     )
 
     object Settings : BottomBarScreen(
         route = "settings",
         title = "Settings",
-        icon = Icons.Default.Search
+        icon = Icons.Default.Person
     )
 
     object MyOrganization : BottomBarScreen(
         route = "organization",
-        title = "organization",
-        icon = Icons.Default.Settings
+        title = "Historico",
+        icon = Icons.Default.Add
     )
 }

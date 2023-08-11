@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "784975810062",
+    "project_id": "proyectofinaldanp",
+    "storage_bucket": "proyectofinaldanp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784975810062:android:b6af7995fd70dddb1ab65f",
+        "android_client_info": {
+          "package_name": "com.unsa.edu.proyectofinaldanp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784975810062-8vos0002gjtu6laej11q9tun4aqgf34o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.unsa.edu.proyectofinaldanp",
+            "certificate_hash": "fab71214531158f293384c0bf2de82a892259b96"
+          }
+        },
+        {
+          "client_id": "784975810062-tsk2fe97gcj085palmkqigq6ap0qoa2g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpWWEkPx4ovlkDl2SVkF6WfHPXHPtMOLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784975810062-tsk2fe97gcj085palmkqigq6ap0qoa2g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

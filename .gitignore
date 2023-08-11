@@ -17,7 +17,7 @@
 local.properties
 
 # Google Services (ex. APIs and Firebase)
-google-services.json
+
 GoogleService-Info.plist
 
 # Firebase Hosting
